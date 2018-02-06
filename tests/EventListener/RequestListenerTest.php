@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+
+namespace BotDemo\Tests\EventListener;
+
+use BotDemo\DTO\Message;
+use BotDemo\DTO\User;
+use BotDemo\EventListener\RequestListener;
+use BotDemo\Serializer\MessageSerializer;
+use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+
+class RequestListenerTest extends TestCase
+{
+    public function testOnKernelRequest()
+    {
+        $fakeMessage = new Message();
+        $fakeMessage->output = 'fooBar';
+        $fakeMessage->user = new User();
+        $fakeMessage->user->type = User::TYPE_USER;
+        $jsonContent = 'jsonContent';
+        $request = Request::create('/', Request::METHOD_POST, [], [], [], [], $jsonContent);
+        $request->setMethod(Request::METHOD_POST);
+
+        $event = $this->createMock(GetResponseEvent::class);
+        $event->method('getRequest')
+            ->willReturn($request);
+
+        $messageSerializer = $this->createMock(MessageSerializer::class);
+        $messageSerializer->expects($this->once())
+            ->method('deserializeFromJson')
+            ->willReturn($fakeMessage)
+            ->with($this->equalTo('jsonContent'));
+
+        $requestListener = new RequestListener($messageSerializer);
+
+        $requestListener->onKernelRequest($event);
+
+        $this->assertEquals($request->get(RequestListener::REQUEST_MESSAGE_KEY), $fakeMessage);
+    }
+}
