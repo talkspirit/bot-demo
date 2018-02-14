@@ -1,6 +1,11 @@
-app:
-    path: /
-    controller: Talkspirit\BotDemo\Controller\AppController::index
+helloworld_bot:
+    path: /helloworld-bot
+    controller: Talkspirit\BotDemo\Controller\AppController::helloWorldBot
+    methods:    [POST]
+
+google_bot:
+    path: /google-bot
+    controller: Talkspirit\BotDemo\Controller\AppController::googleBot
     methods:    [POST]
 
 health_check:

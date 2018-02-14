@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Talkspirit\BotDemo\Tests\Controller;
 
+use Talkspirit\BotDemo\Bot\BotInterface;
 use Talkspirit\BotDemo\Bot\HelloWorldBot;
 use Talkspirit\BotDemo\Client\HttpClient;
 use Talkspirit\BotDemo\Controller\AppController;
@@ -21,7 +22,7 @@ class AppControllerTest extends TestCase
         $this->controller = new AppController();
     }
 
-    public function testIndexAction()
+    public function testHelloWorld()
     {
         $message = new Message();
         $request = new Request();
@@ -34,6 +35,6 @@ class AppControllerTest extends TestCase
         $client->expects($this->once())->method('prepareRequest');
         $client->expects($this->once())->method('sendRequest')->with($this->equalTo(['request']));
 
-        $this->controller->index($request, $client, $bot);
+        $this->controller->helloWorldBot($request, $client, $bot);
     }
 }

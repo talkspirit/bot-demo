@@ -6,7 +6,7 @@ namespace Talkspirit\BotDemo\Bot;
 
 use Talkspirit\BotDemo\DTO\Message;
 
-class HelloWorldBot
+class HelloWorldBot implements BotInterface
 {
     public function reply(Message $message) : Message
     {
