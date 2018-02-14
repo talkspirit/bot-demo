@@ -8,4 +8,4 @@ services:
     #
     # test.App\Service\MyService: '@App\Service\MyService'
 
-    test.BotDemo\Client\HttpClient: '@BotDemo\Client\HttpClient'
+    test.Talkspirit\BotDemo\Client\HttpClient: '@Talkspirit\BotDemo\Client\HttpClient'

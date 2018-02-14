@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BotDemo\EventListener;
+namespace Talkspirit\BotDemo\EventListener;
 
-use BotDemo\DTO\User;
-use BotDemo\Serializer\MessageSerializer;
+use Talkspirit\BotDemo\Serializer\MessageSerializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 

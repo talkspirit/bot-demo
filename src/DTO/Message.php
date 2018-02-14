@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotDemo\DTO;
+namespace Talkspirit\BotDemo\DTO;
 
 class Message
 {

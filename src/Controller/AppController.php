@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BotDemo\Controller;
+namespace Talkspirit\BotDemo\Controller;
 
-use BotDemo\Bot\HelloWorldBot;
-use BotDemo\Client\HttpClient;
-use BotDemo\EventListener\RequestListener;
+use Talkspirit\BotDemo\Bot\HelloWorldBot;
+use Talkspirit\BotDemo\Client\HttpClient;
+use Talkspirit\BotDemo\EventListener\RequestListener;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

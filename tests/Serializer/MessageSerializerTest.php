@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace BotDemo\Tests\Message;
+namespace Talkspirit\BotDemo\Tests\Message;
 
-use BotDemo\DTO\Message;
-use BotDemo\DTO\Room;
-use BotDemo\DTO\User;
-use BotDemo\Serializer\MessageSerializer;
+use Talkspirit\BotDemo\DTO\Message;
+use Talkspirit\BotDemo\DTO\Room;
+use Talkspirit\BotDemo\DTO\User;
+use Talkspirit\BotDemo\Serializer\MessageSerializer;
 use PHPUnit\Framework\TestCase;
 
 class MessageSerializerTest extends TestCase

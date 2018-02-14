@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BotDemo\Tests\Bot;
+namespace Talkspirit\BotDemo\Tests\Bot;
 
-use BotDemo\Bot\HelloWorldBot;
-use BotDemo\DTO\Message;
+use Talkspirit\BotDemo\Bot\HelloWorldBot;
+use Talkspirit\BotDemo\DTO\Message;
 use PHPUnit\Framework\TestCase;
 
 class HelloWorldBotTest extends TestCase

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BotDemo;
+namespace Talkspirit\BotDemo;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;

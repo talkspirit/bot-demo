@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BotDemo\Bot;
+namespace Talkspirit\BotDemo\Bot;
 
-use BotDemo\DTO\Message;
+use Talkspirit\BotDemo\DTO\Message;
 
 class HelloWorldBot
 {

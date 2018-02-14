@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace BotDemo\Tests\Controller;
+namespace Talkspirit\BotDemo\Tests\Controller;
 
-use BotDemo\Bot\HelloWorldBot;
-use BotDemo\Client\HttpClient;
-use BotDemo\Controller\AppController;
-use BotDemo\DTO\Message;
+use Talkspirit\BotDemo\Bot\HelloWorldBot;
+use Talkspirit\BotDemo\Client\HttpClient;
+use Talkspirit\BotDemo\Controller\AppController;
+use Talkspirit\BotDemo\DTO\Message;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 

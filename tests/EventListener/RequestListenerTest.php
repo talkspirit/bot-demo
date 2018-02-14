@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace BotDemo\Tests\EventListener;
+namespace Talkspirit\BotDemo\Tests\EventListener;
 
-use BotDemo\DTO\Message;
-use BotDemo\DTO\User;
-use BotDemo\EventListener\RequestListener;
-use BotDemo\Serializer\MessageSerializer;
+use Talkspirit\BotDemo\DTO\Message;
+use Talkspirit\BotDemo\DTO\User;
+use Talkspirit\BotDemo\EventListener\RequestListener;
+use Talkspirit\BotDemo\Serializer\MessageSerializer;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;

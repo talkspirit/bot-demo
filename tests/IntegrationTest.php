@@ -1,8 +1,8 @@
 <?php
 
-namespace BotDemo\Tests;
+namespace Talkspirit\BotDemo\Tests;
 
-use BotDemo\Client\HttpClient;
+use Talkspirit\BotDemo\Client\HttpClient;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;

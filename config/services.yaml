@@ -13,13 +13,13 @@ services:
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    BotDemo\:
+    Talkspirit\BotDemo\:
         resource: '../src/*'
-        exclude: '../src/{Entity,Migrations,Tests,DTO,Kernel.php}'
+        exclude: '../src/{DTO,Kernel.php}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
-    BotDemo\Controller\:
+    Talkspirit\BotDemo\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
@@ -28,7 +28,7 @@ services:
 
     # EventListener
 
-    BotDemo\EventListener\RequestListener:
+    Talkspirit\BotDemo\EventListener\RequestListener:
         tags:
             - { name: kernel.event_listener, event: kernel.request }
 
@@ -37,8 +37,8 @@ services:
     GuzzleHttp\Client:
         shared: false
 
-    BotDemo\Client\HttpClient:
+    Talkspirit\BotDemo\Client\HttpClient:
         arguments:
             - '@GuzzleHttp\Client'
-            - '@BotDemo\Serializer\MessageSerializer'
+            - '@Talkspirit\BotDemo\Serializer\MessageSerializer'
             - '%env(DOMAIN)%'

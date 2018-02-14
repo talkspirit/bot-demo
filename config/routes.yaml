@@ -1,9 +1,9 @@
 app:
     path: /
-    controller: BotDemo\Controller\AppController::index
+    controller: Talkspirit\BotDemo\Controller\AppController::index
     methods:    [POST]
 
 health_check:
     path: /
-    controller: BotDemo\Controller\AppController::healthCheck
+    controller: Talkspirit\BotDemo\Controller\AppController::healthCheck
     methods:    [GET, HEAD]

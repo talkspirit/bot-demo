@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BotDemo\Serializer;
+namespace Talkspirit\BotDemo\Serializer;
 
-use BotDemo\DTO\Message;
-use BotDemo\DTO\Room;
-use BotDemo\DTO\User;
+use Talkspirit\BotDemo\DTO\Message;
+use Talkspirit\BotDemo\DTO\Room;
+use Talkspirit\BotDemo\DTO\User;
 
 class MessageSerializer
 {

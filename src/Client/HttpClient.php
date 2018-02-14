@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BotDemo\Client;
+namespace Talkspirit\BotDemo\Client;
 
-use BotDemo\DTO\Message;
-use BotDemo\Serializer\MessageSerializer;
+use Talkspirit\BotDemo\DTO\Message;
+use Talkspirit\BotDemo\Serializer\MessageSerializer;
 use GuzzleHttp\Client;
 use Symfony\Component\HttpFoundation\Request;
 

@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-use BotDemo\Kernel;
+use Talkspirit\BotDemo\Kernel;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;

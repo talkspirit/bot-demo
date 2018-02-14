@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BotDemo\Tests\Message;
+namespace Talkspirit\BotDemo\Tests\Message;
 
-use BotDemo\Client\HttpClient;
-use BotDemo\DTO\Message;
-use BotDemo\Serializer\MessageSerializer;
+use Talkspirit\BotDemo\Client\HttpClient;
+use Talkspirit\BotDemo\DTO\Message;
+use Talkspirit\BotDemo\Serializer\MessageSerializer;
 use PHPUnit\Framework\TestCase;
 use GuzzleHttp\Client;
 
