@@ -35,9 +35,11 @@ class GoogleBot implements BotInterface
         ]);
         $response = json_decode($response->getBody()->getContents(), true);
 
+        $message->output .= '<ul>';
         foreach($response['items'] as $item) {
-            $message->output .= '<h2><a href="' . $item['link'] . '">' . $item['title'] . '</a></h2>\n';
+            $message->output .= '<h2><a href="' . $item['link'] . '">' . $item['title'] . '</a></h2>';
         }
+        $message->output .= '</ul>';
 
         return $message;
     }
