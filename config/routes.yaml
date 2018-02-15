@@ -6,7 +6,7 @@ helloworld_bot:
 google_bot:
     path: /google-bot
     controller: Talkspirit\BotDemo\Controller\AppController::googleBot
-    methods:    [POST]
+    methods:    [GET, HEAD, POST]
 
 health_check:
     path: /

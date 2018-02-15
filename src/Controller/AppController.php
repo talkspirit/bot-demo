@@ -22,6 +22,10 @@ class AppController
 
     public function googleBot(Request $request, HttpClient $client, GoogleBot $bot)
     {
+        if($request->getMethod() === Request::METHOD_GET) {
+            return new Response('Welcome on the google bot !');
+        }
+
         return $this->botResponse($request, $client, $bot);
     }
 
