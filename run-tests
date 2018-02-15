@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ "$(docker images -q talkspirit-bot-demo 2> /dev/null)" == "" ]]; then
+    docker build -t talkspirit-bot-demo .
+fi
+docker run -it --rm --name my-running-script -v "$PWD":/var/www -w /var/www talkspirit-bot-demo composer install
+docker run -it --rm --name my-running-script -v "$PWD":/var/www -w /var/www talkspirit-bot-demo php bin/phpunit
