@@ -40,6 +40,6 @@ class GoogleBotTest extends TestCase
         $googleBot = new GoogleBot($client, 'foo', 'bar');
         $googleBot->reply($message);
 
-        $this->assertEquals('<h2><a href="http://title1.com">title1</a></h2>\n<h2><a href="http://title2.com">title2</a></h2>\n', $message->output);
+        $this->assertEquals('<ul><li><h2><a href="http://title1.com">title1</a></h2></li><li><h2><a href="http://title2.com">title2</a></h2></li></ul>', $message->output);
     }
 }
