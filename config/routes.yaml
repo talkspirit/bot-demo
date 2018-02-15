@@ -12,3 +12,8 @@ health_check:
     path: /
     controller: Talkspirit\BotDemo\Controller\AppController::healthCheck
     methods:    [GET, HEAD]
+
+test:
+    path: /
+    controller: Talkspirit\BotDemo\Controller\AppController::test
+    methods:    [GET, HEAD]

@@ -48,4 +48,9 @@ class AppController
     {
         return new Response('Welcome on the bot-demo app !');
     }
+
+    public function test()
+    {
+        return new Response('test!');
+    }
 }
