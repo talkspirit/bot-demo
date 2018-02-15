@@ -22,10 +22,6 @@ class AppController
 
     public function googleBot(Request $request, HttpClient $client, GoogleBot $bot)
     {
-        if($request->getMethod() === Request::METHOD_GET) {
-            return new Response('Welcome on the google bot !');
-        }
-
         return $this->botResponse($request, $client, $bot);
     }
 
@@ -47,10 +43,5 @@ class AppController
     public function healthCheck()
     {
         return new Response('Welcome on the bot-demo app !');
-    }
-
-    public function test()
-    {
-        return new Response('test!');
     }
 }
