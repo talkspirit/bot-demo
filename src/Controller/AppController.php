@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Talkspirit\BotDemo\Controller;
 
+use Talkspirit\BotDemo\Bot\BotInterface;
+use Talkspirit\BotDemo\Bot\GoogleBot;
 use Talkspirit\BotDemo\Bot\HelloWorldBot;
 use Talkspirit\BotDemo\Client\HttpClient;
 use Talkspirit\BotDemo\EventListener\RequestListener;
@@ -13,10 +15,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AppController
 {
-    /**
-     * @Route("/", methods={"POST"})
-     */
-    public function index(Request $request, HttpClient $client, HelloWorldBot $bot)
+    public function helloWorldBot(Request $request, HttpClient $client, HelloWorldBot $bot)
+    {
+        return $this->botResponse($request, $client, $bot);
+    }
+
+    public function googleBot(Request $request, HttpClient $client, GoogleBot $bot)
+    {
+        return $this->botResponse($request, $client, $bot);
+    }
+
+    private function botResponse(Request $request, HttpClient $client, BotInterface $bot)
     {
         if($request->get(RequestListener::REQUEST_MESSAGE_KEY) === null) {
             return new Response(null, Response::HTTP_NO_CONTENT);
@@ -31,9 +40,6 @@ class AppController
         return new Response('Response sent');
     }
 
-    /**
-     * @Route("/", methods={"GET"})
-     */
     public function healthCheck()
     {
         return new Response('Welcome on the bot-demo app !');

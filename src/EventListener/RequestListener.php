@@ -24,7 +24,7 @@ class RequestListener
     {
         $request = $event->getRequest();
 
-        if ($request->getMethod() === Request::METHOD_POST && $request->getRequestUri() === '/') {
+        if ($request->getMethod() === Request::METHOD_POST) {
             $message = $this->messageSerializer->deserializeFromJson($request->getContent());
 
             if (!$message->user->isBot()) {
