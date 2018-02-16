@@ -2,7 +2,7 @@
 
 A working talkspirit bot sample powered by [symfony4](https://symfony.com/)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/talkspirit/bot-demo?env[APP_ENV]=prod)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/talkspirit/bot-demo&env[APP_ENV]=prod)
 
 ## Development
 
