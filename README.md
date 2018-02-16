@@ -73,21 +73,19 @@ In this example the bot will be reachable via the url {your server}/my-new-bot
 
 ### Deployment
 
-You can easily test your bot using the Heroku platform. To do that, follow the [documentation](https://devcenter.heroku.com/articles/git) and then add the environment variables :
-
-```bash
-heroku config:set APP_ENV=dev
-
-# If you want to use the GoogleBot (see https://developers.google.com/custom-search/json-api/v1/overview)
-heroku config:set GOOGLE_API_KEY=dev
-heroku config:set GOOGLE_SEARCH_ENGINE=dev
-
-```
-
-Now you can run the server :
+You can easily test your bot using the Heroku platform. To do that, follow the [documentation](https://devcenter.heroku.com/articles/git)
+Then run the server :
 
 ```bash
 git push heroku master
 ```
 
-Once it's done, you'll have an url like https://polar-ridge-99999.herokuapp.com/. So your bot url will be https://polar-ridge-99999.herokuapp.com/my-new-bot
+Once it's done, you'll have an url like https://xxxx.herokuapp.com/. So your bot url will be https://xxxx.herokuapp.com/my-new-bot
+
+### Enable your bot
+
+To activate the bot referer to the [Talkspirit documentation](https://talkspirit.github.io/docs/create-bot/)
+
+## Contribution
+
+For now, contributions aren't allowed. If you encounter an bug or if you have an improvement idea, please create an issue.
