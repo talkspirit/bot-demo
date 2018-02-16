@@ -9,5 +9,5 @@ interface BotInterface
     /**
      * Reply to a given message.
      */
-    public function reply(Message $message) : Message;
+    public function reply(Message $message): Message;
 }

@@ -8,9 +8,9 @@ use Talkspirit\BotDemo\DTO\Message;
 
 class HelloWorldBot implements BotInterface
 {
-    public function reply(Message $message) : Message
+    public function reply(Message $message): Message
     {
-        $message->output = 'Hello World ' . $message->input;
+        $message->output = 'Hello World '.$message->input;
 
         return $message;
     }

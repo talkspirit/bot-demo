@@ -23,8 +23,8 @@ class RequestListener
     {
         $request = $event->getRequest();
 
-        if ($request->getMethod() === Request::METHOD_POST) {
-            if(empty($request->getContent())) {
+        if (Request::METHOD_POST === $request->getMethod()) {
+            if (empty($request->getContent())) {
                 throw new BadRequestHttpException('Invalid message');
             }
 
