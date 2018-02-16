@@ -21,7 +21,8 @@ class MyNewBot implements BotInterface
 {
     public function reply(Message $message): Message
     {
-        // Here you should put your response into the $message->output attribute.
+        // Create the appropriate response to the $message->input request and
+        // then put it into the $message->output attribute.
     }
 }
 ```
@@ -35,13 +36,14 @@ Thanks to the Symfony autowiring, you don't need to add any dependency injection
 # src/Controller/AppController.php
 
 //...
+use Talkspirit\BotDemo\Bot\MyNewBot;
 
 class AppController
 {
     //...
-    public function myNewBot(Request $request, HttpClient $client, MyNewBot $bot)
+    public function myNewBot(HttpClient $client, MyNewBot $bot, Message $message)
     {
-        return $this->botResponse($request, $client, $bot);
+        return $this->botResponse($client, $bot, $message);
     }
     //...
 }
@@ -60,7 +62,7 @@ my_new_bot:
 
 In this example the bot will be reachable via the url {your server}/my-new-bot
 
-### Deploy
+### Deployment
 
 You can easily test your bot using the Heroku platform. To do that, follow the [documentation](https://devcenter.heroku.com/articles/git) and then add the environment variables :
 

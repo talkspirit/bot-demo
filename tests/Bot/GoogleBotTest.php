@@ -11,7 +11,14 @@ use Talkspirit\BotDemo\DTO\Message;
 
 class GoogleBotTest extends TestCase
 {
-    public function testReply()
+    /** @var GoogleBot */
+    private $googleBot;
+    /** @var Client */
+    private $client;
+    /** @var Response */
+    private $response;
+
+    public function setUp()
     {
         $payload = [
             'items' => [
@@ -28,18 +35,39 @@ class GoogleBotTest extends TestCase
         $stream = $this->createMock(Stream::class);
         $stream->method('getContents')->willReturn(json_encode($payload));
 
-        $response = $this->createMock(Response::class);
-        $response->method('getBody')->willReturn($stream);
+        $this->response = $this->createMock(Response::class);
+        $this->response->method('getBody')->willReturn($stream);
 
-        $client = $this->createMock(Client::class);
-        $client->method('request')->willReturn($response);
+        $this->client = $this->createMock(Client::class);
 
+        $this->googleBot = new GoogleBot($this->client, 'foo', 'bar');
+    }
+
+    public function testSimpleReply()
+    {
         $message = new Message();
         $message->input = 'bar';
 
-        $googleBot = new GoogleBot($client, 'foo', 'bar');
-        $googleBot->reply($message);
+        $this->googleBot->reply($message);
 
-        $this->assertEquals('<ul><li><h2><a href="http://title1.com">title1</a></h2></li><li><h2><a href="http://title2.com">title2</a></h2></li></ul>', $message->output);
+        $this->assertEquals('Hello search any word by typing "/search {word}"', $message->output);
+    }
+
+    public function testReply()
+    {
+        $message = new Message();
+        $message->input = '/search bar foo';
+
+        $this->client->method('request')->with(
+            'GET',
+            'https://www.googleapis.com/customsearch/v1?key=bar&cx=foo&q=bar foo&alt=json&num=3',
+            ['headers' => [
+                'Accept'     => 'application/json',
+            ]]
+        )->willReturn($this->response);
+
+        $this->googleBot->reply($message);
+
+        $this->assertEquals('## Searching for "bar foo"' . PHP_EOL . '* [title1](http://title1.com)' . PHP_EOL . '* [title2](http://title2.com)' . PHP_EOL, $message->output);
     }
 }

@@ -25,8 +25,20 @@ class GoogleBot implements BotInterface
     public function reply(Message $message): Message
     {
         $input = $message->input;
+
+        if(preg_match('/^\/search (.*)/', $input, $matches)) {
+            return $this->performSearch($message, $matches[1]);
+        }
+
+        $message->output = 'Hello search any word by typing "/search {word}"';
+
+        return $message;
+    }
+
+    private function performSearch(Message $message, string $search): Message
+    {
         $urlPattern = 'https://www.googleapis.com/customsearch/v1?key=%s&cx=%s&q=%s&alt=json&num=3';
-        $url = sprintf($urlPattern, $this->googleApiKey, $this->serachEngine, $input);
+        $url = sprintf($urlPattern, $this->googleApiKey, $this->serachEngine, $search);
 
         $response = $this->client->request(Request::METHOD_GET, $url, [
             'headers' => [
@@ -35,11 +47,11 @@ class GoogleBot implements BotInterface
         ]);
         $response = json_decode($response->getBody()->getContents(), true);
 
-        $message->output .= '<ul>';
+
+        $message->output = sprintf('## Searching for "%s"'. PHP_EOL, $search);
         foreach($response['items'] as $item) {
-            $message->output .= '<li><h2><a href="' . $item['link'] . '">' . $item['title'] . '</a></h2></li>';
+            $message->output .= sprintf('* [%s](%s)' . PHP_EOL, $item['title'], $item['link']);
         }
-        $message->output .= '</ul>';
 
         return $message;
     }
