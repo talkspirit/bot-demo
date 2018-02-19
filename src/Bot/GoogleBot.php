@@ -26,7 +26,7 @@ class GoogleBot implements BotInterface
     {
         $input = $message->input;
 
-        if(preg_match('/^\/search (.*)/', $input, $matches)) {
+        if (preg_match('/^\/search (.*)/', $input, $matches)) {
             return $this->performSearch($message, $matches[1]);
         }
 
@@ -42,15 +42,14 @@ class GoogleBot implements BotInterface
 
         $response = $this->client->request(Request::METHOD_GET, $url, [
             'headers' => [
-                'Accept'     => 'application/json',
+                'Accept' => 'application/json',
             ],
         ]);
         $response = json_decode($response->getBody()->getContents(), true);
 
-
-        $message->output = sprintf('## Searching for "%s"'. PHP_EOL, $search);
-        foreach($response['items'] as $item) {
-            $message->output .= sprintf('* [%s](%s)' . PHP_EOL, $item['title'], $item['link']);
+        $message->output = sprintf('## Searching for "%s"'.PHP_EOL, $search);
+        foreach ($response['items'] as $item) {
+            $message->output .= sprintf('* [%s](%s)'.PHP_EOL, $item['title'], $item['link']);
         }
 
         return $message;

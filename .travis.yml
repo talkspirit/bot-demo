@@ -4,4 +4,5 @@ services:
   - docker
 
 script:
-   - ./run-tests
+   - make phpunit
+   - make phpcs-dry-run

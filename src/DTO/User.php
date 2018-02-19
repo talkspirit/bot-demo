@@ -18,6 +18,6 @@ class User
 
     public function isBot()
     {
-        return $this->type === self::TYPE_BOT;
+        return self::TYPE_BOT === $this->type;
     }
 }

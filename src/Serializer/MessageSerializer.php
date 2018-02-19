@@ -10,7 +10,7 @@ use Talkspirit\BotDemo\DTO\User;
 
 class MessageSerializer
 {
-    public function normalize(Message $message) : array
+    public function normalize(Message $message): array
     {
         return [
             'meta' => [
@@ -25,7 +25,7 @@ class MessageSerializer
         ];
     }
 
-    public function denormalize(array $payload) : Message
+    public function denormalize(array $payload): Message
     {
         $user = new User();
         $user->id = $payload['data']['from']['id'];
@@ -47,12 +47,12 @@ class MessageSerializer
         return $message;
     }
 
-    public function deserializeFromJson(string $payload) : Message
+    public function deserializeFromJson(string $payload): Message
     {
         return $this->denormalize(json_decode($payload, true));
     }
 
-    public function serializeToJson(Message $message) : string
+    public function serializeToJson(Message $message): string
     {
         return json_encode($this->normalize($message));
     }

@@ -32,9 +32,9 @@ class HttpClient
             sprintf('https://webhook.%s.net/v1/bot/%s', $this->domain, $message->token),
             [
                 'headers' => [
-                    'Accept'     => 'application/json',
+                    'Accept' => 'application/json',
                 ],
-                'json' => $this->messageSerializer->normalize($message)
+                'json' => $this->messageSerializer->normalize($message),
             ],
         ];
     }
