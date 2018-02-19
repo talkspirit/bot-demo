@@ -25,8 +25,7 @@ class AppControllerTest extends TestCase
     public function testHelloWorld()
     {
         $message = new Message();
-        $request = new Request();
-        $request->query->set('message', $message);
+        $message->input = 'foo';
         $client = $this->createMock(HttpClient::class);
         $client->method('prepareRequest')->willReturn(['request']);
         $bot = $this->createMock(HelloWorldBot::class);
@@ -35,6 +34,6 @@ class AppControllerTest extends TestCase
         $client->expects($this->once())->method('prepareRequest');
         $client->expects($this->once())->method('sendRequest')->with($this->equalTo(['request']));
 
-        $this->controller->helloWorldBot($request, $client, $bot);
+        $this->controller->helloWorldBot($client, $bot, $message);
     }
 }

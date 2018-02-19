@@ -38,6 +38,6 @@ class RequestListenerTest extends TestCase
 
         $requestListener->onKernelRequest($event);
 
-        $this->assertEquals($request->get(RequestListener::REQUEST_MESSAGE_KEY), $fakeMessage);
+        $this->assertEquals($request->get('message'), $fakeMessage);
     }
 }

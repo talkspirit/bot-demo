@@ -8,30 +8,23 @@ use Talkspirit\BotDemo\Bot\BotInterface;
 use Talkspirit\BotDemo\Bot\GoogleBot;
 use Talkspirit\BotDemo\Bot\HelloWorldBot;
 use Talkspirit\BotDemo\Client\HttpClient;
-use Talkspirit\BotDemo\EventListener\RequestListener;
-use Symfony\Component\HttpFoundation\Request;
+use Talkspirit\BotDemo\DTO\Message;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 class AppController
 {
-    public function helloWorldBot(Request $request, HttpClient $client, HelloWorldBot $bot)
+    public function helloWorldBot(HttpClient $client, HelloWorldBot $bot, Message $message)
     {
-        return $this->botResponse($request, $client, $bot);
+        return $this->botResponse($client, $bot, $message);
     }
 
-    public function googleBot(Request $request, HttpClient $client, GoogleBot $bot)
+    public function googleBot(HttpClient $client, GoogleBot $bot, Message $message)
     {
-        return $this->botResponse($request, $client, $bot);
+        return $this->botResponse($client, $bot, $message);
     }
 
-    private function botResponse(Request $request, HttpClient $client, BotInterface $bot)
+    private function botResponse(HttpClient $client, BotInterface $bot, Message $message)
     {
-        if($request->get(RequestListener::REQUEST_MESSAGE_KEY) === null) {
-            return new Response(null, Response::HTTP_NO_CONTENT);
-        }
-
-        $message = $request->get(RequestListener::REQUEST_MESSAGE_KEY);
         $message = $bot->reply($message);
 
         $response = $client->prepareRequest($message);
