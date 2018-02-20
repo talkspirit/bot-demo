@@ -34,7 +34,7 @@ class HttpClient
         $url = sprintf('https://webhook.%s.net/v1/bot/%s', $this->domain, $message->token);
         $payload = $this->messageSerializer->normalize($message);
 
-        $this->logger->info(sprintf('POST request send to the url %s with payload : %s', $url, json_encode($payload)));
+        $this->logger->info(sprintf('POST request sent to the url %s with payload : %s', $url, json_encode($payload)));
 
         return [
             Request::METHOD_POST,

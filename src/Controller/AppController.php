@@ -13,22 +13,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AppController
 {
-    public function helloWorldBot(HttpClient $client, HelloWorldBot $bot, Message $message = null)
+    public function helloWorldBot(HttpClient $client, HelloWorldBot $bot, Message $message)
     {
         return $this->botResponse($client, $bot, $message);
     }
 
-    public function googleBot(HttpClient $client, GoogleBot $bot, Message $message = null)
+    public function googleBot(HttpClient $client, GoogleBot $bot, Message $message)
     {
         return $this->botResponse($client, $bot, $message);
     }
 
-    private function botResponse(HttpClient $client, BotInterface $bot, Message $message = null)
+    private function botResponse(HttpClient $client, BotInterface $bot, Message $message)
     {
-        if($message === null) {
-            return new Response('', Response::HTTP_NO_CONTENT);
-        }
-
         $message = $bot->reply($message);
 
         $response = $client->prepareRequest($message);

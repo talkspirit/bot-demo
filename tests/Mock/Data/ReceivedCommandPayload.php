@@ -2,7 +2,7 @@
 
 return [
     'meta' => [
-        'type' => 'chat_message',
+        'type' => 'bot_command',
         'host' => 'myHost',
         'id' => 'fakeId',
         'token' => 'myToken',
