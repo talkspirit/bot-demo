@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Talkspirit\BotDemo\Tests\Message;
 
+use Psr\Log\LoggerInterface;
 use Talkspirit\BotDemo\Client\HttpClient;
 use Talkspirit\BotDemo\DTO\Message;
 use Talkspirit\BotDemo\Serializer\MessageSerializer;
@@ -21,7 +22,7 @@ class HttpClientTest extends TestCase
         $serializer = $this->createMock(MessageSerializer::class);
         $serializer->method('normalize')->willReturn(['normalizedMessage']);
 
-        $this->httpClient = new HttpClient($client, $serializer, 'myDomain');
+        $this->httpClient = new HttpClient($client, $serializer, 'myDomain', $this->createMock(LoggerInterface::class));
     }
 
     public function testPrepareRequest()
