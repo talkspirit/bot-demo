@@ -8,6 +8,7 @@ use Talkspirit\BotDemo\Bot\BotInterface;
 use Talkspirit\BotDemo\Bot\GoogleBot;
 use Talkspirit\BotDemo\Bot\HelloWorldBot;
 use Talkspirit\BotDemo\Client\HttpClient;
+use Talkspirit\BotDemo\DTO\InlineQuery;
 use Talkspirit\BotDemo\DTO\Message;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -25,9 +26,17 @@ class AppController
 
     private function botResponse(HttpClient $client, BotInterface $bot, Message $message)
     {
-        $message = $bot->reply($message);
+        if(empty($message->input)) {
+            $inlineQuery = new InlineQuery();
+            $inlineQuery->token = $message->token;
+            $inlineQuery->id = $message->id;
+            $inlineQuery->commands = $bot->getAvailableCommands();
+            $response = $client->prepareInlineQueryRequest($inlineQuery);
+        } else {
+            $message = $bot->reply($message);
+            $response = $client->prepareMessageRequest($message);
+        }
 
-        $response = $client->prepareRequest($message);
         $client->sendRequest($response);
 
         return new Response('Response sent');

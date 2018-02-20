@@ -46,6 +46,7 @@ class MessageSerializer
         $message->host = $payload['meta']['host'];
         $message->token = $payload['meta']['token'];
         $message->input = $payload['data']['text'];
+        $message->id = $payload['data']['id'];
         $message->room = $room;
         $message->user = $user;
 

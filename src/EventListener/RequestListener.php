@@ -31,14 +31,16 @@ class RequestListener
         if (Request::METHOD_POST === $request->getMethod()) {
             $this->logger->info('POST request received with payload : ' . $request->getContent());
 
-            if(empty($request->getContent())) {
-                throw new BadRequestHttpException('Invalid message');
-            }
+            if (!empty($request->getContent())) {
+                $message = $this->messageSerializer->deserializeFromJson($request->getContent());
 
-            $message = $this->messageSerializer->deserializeFromJson($request->getContent());
-
-            if (!$message->user->isBot()) {
-                $request->attributes->set('message', $message);
+                if (!$message->user->isBot()) {
+                    $request->attributes->set('message', $message);
+                } else {
+                    $event->setResponse(new Response('', Response::HTTP_NO_CONTENT));
+                }
+            } else {
+                $event->setResponse(new Response('Invalid payload', Response::HTTP_BAD_REQUEST));
             }
         }
     }
