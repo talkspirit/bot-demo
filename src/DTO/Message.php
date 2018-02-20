@@ -11,7 +11,7 @@ class Message
     /** @var string */
     public $host;
     /** @var string */
-    public $type;
+    public $type = 'chat_message';
     /** @var string */
     public $output;
     /** @var string */
@@ -20,4 +20,6 @@ class Message
     public $room;
     /** @var User */
     public $user;
+    /** @var string */
+    public $command;
 }

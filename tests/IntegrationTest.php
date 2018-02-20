@@ -21,9 +21,6 @@ class IntegrationTest extends WebTestCase
 
         $this->client = self::createClient();
         $this->client->getContainer()->set('test.' . HttpClient::class, $httpClient);
-
-        $payload = require (__DIR__ . '/Mock/Data/ReceivedPayload.php');
-        $this->jsonPayload = json_encode($payload);
     }
 
     public function testAppPost()
