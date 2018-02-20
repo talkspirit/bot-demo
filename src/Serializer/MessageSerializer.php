@@ -12,7 +12,7 @@ class MessageSerializer
 {
     public function normalize(Message $message): array
     {
-        return [
+        $response = [
             'meta' => [
                 'type' => $message->type,
             ],
@@ -23,6 +23,12 @@ class MessageSerializer
                 ],
             ],
         ];
+
+        if($message->command) {
+            $response['data']['command'] = $message->command;
+        }
+
+        return $response;
     }
 
     public function denormalize(array $payload): Message
@@ -43,6 +49,10 @@ class MessageSerializer
         $message->input = $payload['data']['text'];
         $message->room = $room;
         $message->user = $user;
+
+        if(isset($payload['data']['command'])) {
+            $message->command = $payload['data']['command'];
+        }
 
         return $message;
     }

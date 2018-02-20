@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Talkspirit\BotDemo\Tests\EventListener;
 
+use Psr\Log\LoggerInterface;
 use Talkspirit\BotDemo\DTO\Message;
 use Talkspirit\BotDemo\DTO\User;
 use Talkspirit\BotDemo\EventListener\RequestListener;
@@ -34,7 +35,7 @@ class RequestListenerTest extends TestCase
             ->willReturn($fakeMessage)
             ->with($this->equalTo('jsonContent'));
 
-        $requestListener = new RequestListener($messageSerializer);
+        $requestListener = new RequestListener($messageSerializer, $this->createMock(LoggerInterface::class));
 
         $requestListener->onKernelRequest($event);
 

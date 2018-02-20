@@ -71,4 +71,29 @@ class MessageSerializerTest extends TestCase
 
         $this->assertEquals($expected, $message);
     }
+
+    public function testDenormalizeCommand()
+    {
+        $payload = require (__DIR__ . '/../Mock/Data/ReceivedCommandPayload.php');
+        $message = $this->messageSerializer->denormalize($payload);
+
+        $room = new Room();
+        $room->id = 'myRoomId';
+
+        $user = new User();
+        $user->id = 'userSlug';
+        $user->displayName = 'displayName';
+        $user->type = 'user';
+
+        $expected = new Message();
+        $expected->token = 'myToken';
+        $expected->host = 'myHost';
+        $expected->type = 'chat_message';
+        $expected->room = $room;
+        $expected->user = $user;
+        $expected->input = 'foo';
+        $expected->command = 'myCommand';
+
+        $this->assertEquals($expected, $message);
+    }
 }

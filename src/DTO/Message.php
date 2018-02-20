@@ -20,4 +20,6 @@ class Message
     public $room;
     /** @var User */
     public $user;
+    /** @var string */
+    public $command;
 }
