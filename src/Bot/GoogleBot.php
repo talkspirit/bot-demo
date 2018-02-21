@@ -3,6 +3,7 @@
 namespace Talkspirit\BotDemo\Bot;
 
 use Symfony\Component\HttpFoundation\Request;
+use Talkspirit\BotDemo\DTO\Command;
 use Talkspirit\BotDemo\DTO\Message;
 use GuzzleHttp\Client;
 
@@ -53,5 +54,12 @@ class GoogleBot implements BotInterface
         }
 
         return $message;
+    }
+
+    public function getAvailableCommands(): array
+    {
+        return [
+            Command::createCommand('Search', 'Perform a google search', '/search', '/search {query}')
+        ];
     }
 }

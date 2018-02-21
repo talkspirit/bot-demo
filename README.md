@@ -24,6 +24,13 @@ class MyNewBot implements BotInterface
         // Create the appropriate response to the $message->input request and
         // then put it into the $message->output attribute.
     }
+    
+    public function getAvailableCommands(): array
+    {
+        return [
+            // List of available commands with your bot. Use Talkspirit\BotDemo\DTO\Command::createCommand to add a new one
+        ];
+    }
 }
 ```
 

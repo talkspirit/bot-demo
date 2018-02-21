@@ -43,6 +43,7 @@ services:
         arguments:
             - '@GuzzleHttp\Client'
             - '@Talkspirit\BotDemo\Serializer\MessageSerializer'
+            - '@Talkspirit\BotDemo\Serializer\InlineQuerySerializer'
             - '%env(DOMAIN)%'
 
     Talkspirit\BotDemo\Bot\GoogleBot:

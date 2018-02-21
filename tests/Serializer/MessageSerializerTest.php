@@ -30,6 +30,7 @@ class MessageSerializerTest extends TestCase
         $message->type = 'chat_message';
         $message->host = 'my.host.com';
         $message->token = 'myToken';
+        $message->id = 'myId';
 
         $message = $this->messageSerializer->normalize($message);
 
@@ -68,6 +69,7 @@ class MessageSerializerTest extends TestCase
         $expected->room = $room;
         $expected->user = $user;
         $expected->input = 'foo';
+        $expected->id = 'fakeMessageId';
 
         $this->assertEquals($expected, $message);
     }
@@ -93,6 +95,7 @@ class MessageSerializerTest extends TestCase
         $expected->user = $user;
         $expected->input = 'foo';
         $expected->command = 'myCommand';
+        $expected->id = 'fakeMessageId';
 
         $this->assertEquals($expected, $message);
     }

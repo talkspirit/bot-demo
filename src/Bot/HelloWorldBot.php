@@ -14,4 +14,9 @@ class HelloWorldBot implements BotInterface
 
         return $message;
     }
+
+    public function getAvailableCommands(): array
+    {
+        return [];
+    }
 }

@@ -7,6 +7,8 @@ namespace Talkspirit\BotDemo\DTO;
 class Message
 {
     /** @var string */
+    public $id;
+    /** @var string */
     public $token;
     /** @var string */
     public $host;
