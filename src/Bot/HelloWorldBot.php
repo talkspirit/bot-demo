@@ -24,7 +24,7 @@ class HelloWorldBot implements BotInterface
         return $message;
     }
 
-    private function getHelp(Message $message) : Message
+    private function getHelp(Message $message): Message
     {
         $message->output = self::HELP_MESSAGE;
 
@@ -34,7 +34,7 @@ class HelloWorldBot implements BotInterface
     public function getAvailableCommands(): array
     {
         return [
-            Command::createCommand('Help', 'Get the help', '/help', '/help')
+            Command::createCommand('Help', 'Get the help', '/help', '/help'),
         ];
     }
 }

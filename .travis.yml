@@ -4,5 +4,10 @@ services:
   - docker
 
 script:
-   - make phpunit
-   - make phpcs-dry-run
+   - make docker-build
+   - make docker-composer
+   - make docker-phpunit
+   - make docker-phpcs-dry-run
+
+notifications:
+  email: false

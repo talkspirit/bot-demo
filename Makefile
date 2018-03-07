@@ -19,10 +19,13 @@ docker-phpcs:
 docker-phpcs-dry-run:
 	$(MAKE) docker-command COMMAND="make phpcs-dry-run"
 
+docker-composer:
+	$(MAKE) docker-command COMMAND="make composer"
+
 docker-build:
 	docker build -t talkspirit-bot-demo .
 
 docker-command:
 	docker run -it --rm --name my-running-script -v ${PWD}:/var/www -w /var/www talkspirit-bot-demo $(COMMAND)
 
-.PHONY: composer phpunit phpcs docker-build docker-command
+.PHONY: composer phpunit phpcs phpcs-dry-run docker-phpunit docker-phpcs docker-phpcs-dry-run docker-composer docker-build docker-command

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/talkspirit/bot-demo.svg?branch=master)](https://travis-ci.org/talkspirit/bot-demo)
+
 # Talkspirit Bot Demo
 
 A working talkspirit bot sample powered by [symfony4](https://symfony.com/)
