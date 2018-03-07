@@ -12,7 +12,7 @@ interface BotInterface
     public function reply(Message $message): Message;
 
     /**
-     * Return the list of the available command for the bot
+     * Return the list of the available command for the bot.
      */
     public function getAvailableCommands(): array;
 }

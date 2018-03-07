@@ -19,7 +19,7 @@ class InlineQuerySerializer
                 'id' => $inlineQuery->id,
                 'result' => array_map(function (Command $command) {
                     return $command->toArray();
-                }, $inlineQuery->commands)
+                }, $inlineQuery->commands),
             ],
         ];
     }

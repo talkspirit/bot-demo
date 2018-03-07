@@ -26,7 +26,7 @@ class AppController
 
     private function botResponse(HttpClient $client, BotInterface $bot, Message $message)
     {
-        if(empty($message->input)) {
+        if (empty($message->input)) {
             $inlineQuery = new InlineQuery();
             $inlineQuery->token = $message->token;
             $inlineQuery->id = $message->id;

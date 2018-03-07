@@ -15,7 +15,7 @@ class Command
     /** @var string|null */
     public $usage;
 
-    public static function createCommand(string $title, string $description, string $trigger, string $usage) : self
+    public static function createCommand(string $title, string $description, string $trigger, string $usage): self
     {
         $self = new self();
         $self->title = $title;
@@ -26,7 +26,7 @@ class Command
         return $self;
     }
 
-    public function toArray() : array
+    public function toArray(): array
     {
         return [
             'type' => 'command',

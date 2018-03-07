@@ -59,7 +59,7 @@ class GoogleBot implements BotInterface
     public function getAvailableCommands(): array
     {
         return [
-            Command::createCommand('Search', 'Perform a google search', '/search', '/search {query}')
+            Command::createCommand('Search', 'Perform a google search', '/search', '/search {query}'),
         ];
     }
 }
