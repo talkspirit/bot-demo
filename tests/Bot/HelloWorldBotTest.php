@@ -27,4 +27,14 @@ class HelloWorldBotTest extends TestCase
 
         $this->assertEquals('Hello World bar', $message->output);
     }
+
+    public function testHelpCommand()
+    {
+        $message = new Message();
+        $message->input = '/help';
+
+        $this->helloWorldBot->reply($message);
+
+        $this->assertEquals(HelloWorldBot::HELP_MESSAGE, $message->output);
+    }
 }
