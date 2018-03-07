@@ -24,7 +24,7 @@ class MessageSerializer
             ],
         ];
 
-        if($message->command) {
+        if ($message->command) {
             $response['data']['command'] = $message->command;
         }
 
@@ -50,7 +50,7 @@ class MessageSerializer
         $message->room = $room;
         $message->user = $user;
 
-        if(isset($payload['data']['command'])) {
+        if (isset($payload['data']['command'])) {
             $message->command = $payload['data']['command'];
         }
 
